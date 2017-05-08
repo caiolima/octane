@@ -294,6 +294,7 @@ UnaryConstraint.prototype.removeFromGraph = function () {
  * optimization".
  */
 function StayConstraint(v, str) {
+  "specialize 1";
   StayConstraint.superConstructor.call(this, v, str);
 }
 
@@ -312,6 +313,8 @@ StayConstraint.prototype.execute = function () {
  * wishes to change.
  */
 function EditConstraint(v, str) {
+  "specialize 1";
+
   EditConstraint.superConstructor.call(this, v, str);
 }
 
@@ -342,6 +345,8 @@ Direction.BACKWARD = -1;
  * variables.
  */
 function BinaryConstraint(var1, var2, strength) {
+  "specialize 2";
+
   BinaryConstraint.superConstructor.call(this, strength);
   this.v1 = var1;
   this.v2 = var2;
@@ -456,6 +461,8 @@ BinaryConstraint.prototype.removeFromGraph = function () {
  * read-only.
  */
 function ScaleConstraint(src, scale, offset, dest, strength) {
+  "specialize 4";
+
   this.direction = Direction.NONE;
   this.scale = scale;
   this.offset = offset;
@@ -515,6 +522,8 @@ ScaleConstraint.prototype.recalculate = function () {
  * Constrains two variables to have the same value.
  */
 function EqualityConstraint(var1, var2, strength) {
+  "specialize 2";
+
   EqualityConstraint.superConstructor.call(this, var1, var2, strength);
 }
 
@@ -832,6 +841,8 @@ function chainTest(n) {
  * mapping and to change the scale and offset factors.
  */
 function projectionTest(n) {
+  "specialize 0";
+
   planner = new Planner();
   var scale = new Variable("scale", 10);
   var offset = new Variable("offset", 1000);
